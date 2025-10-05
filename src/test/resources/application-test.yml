@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          generate_statistics: true
+          region:
+            factory_class: org.hibernate.cache.jcache.JCacheRegionFactory
+        cache.provider_class: org.hibernate.cache.jcache.JCacheRegionFactory
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.cache: DEBUG
+    org.springframework.cache: DEBUG
+    org.ehcache: DEBUG
+    javax.cache: DEBUG
